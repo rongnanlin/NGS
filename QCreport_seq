@@ -1,0 +1,149 @@
+#!/TJPROJ2/PBD/linrongnan/sotfware/miniconda3/bin/python
+#coding=utf-8
+'''
+Created on 20190830
+@author: linrongnan
+Email:linrongnan@novogene.com
+'''
+import os
+import argparse
+import datetime
+parser=argparse.ArgumentParser(prog='QCreport',usage='%(prog)s [opthions] [value]',description='This program is used to generate QC report!')
+
+parser.add_argument('-PROJECT','--project',help='the project information ,for example : pn.txt',metavar='')
+parser.add_argument('-PRODIR','--projdir',help='the directory of project',metavar='')
+parser.add_argument('-QCLIST','--qclist',help='the library information,for example :qc_list',metavar='')
+argv=vars(parser.parse_args())
+#argparse
+
+if argv['project'] == None:
+        raise Exception('You should provide the project information!')
+if argv['project'] != None:
+        project=argv['project'].strip()
+
+if argv['projdir'] == None:
+        raise Exception('You should provide the projdir information!')
+if argv['projdir'] != None:
+        projdir=argv['projdir'].strip()
+
+if argv['qclist'] == None:
+        raise Exception('You should provide the qclist information!')
+if argv['qclist'] != None:
+        qclist=argv['qclist'].strip()
+
+d1 = datetime.date.today()
+jieti_time='-'.join(str(d1).split('-')[0:3])
+
+
+
+#read project information
+Project=open(project)
+for eachline1 in Project:
+        if not eachline1.startswith("项目编号"):
+                Eachline1=eachline1.strip().split('\t')
+                project_id=Eachline1[0]
+                project_name=Eachline1[1]
+                report_id=Eachline1[0]+"-"+Eachline1[2]
+
+
+#read sample information
+samplelist=[]
+dic_sample_to_PatientID={}
+dic_sample_to_LibraryID={}
+dic_sample_to_Flowcell_Lane={}
+dic_sample_to_stype={}
+dic_sample_to_prefix={}
+
+Sample=open(qclist)
+for eachline2 in Sample:
+        Eachline2=eachline2.strip().split('\t')
+        PatientID=Eachline2[1]
+        SampleID=Eachline2[2]
+        LibraryID=Eachline2[3]
+        Flowcell_Lane=Eachline2[0]
+        stype=Eachline2[6]
+        prefix=SampleID+"_"+LibraryID+"_"+Flowcell_Lane
+        samplelist.append(str(SampleID))
+        dic_sample_to_PatientID[SampleID]=str(PatientID)
+        dic_sample_to_LibraryID[SampleID]=str(LibraryID)
+        dic_sample_to_Flowcell_Lane[SampleID]=str(Flowcell_Lane)
+        dic_sample_to_stype[SampleID]=str(stype)
+        dic_sample_to_prefix[SampleID]=str(prefix)
+
+
+#cp qc model report
+os.system('mkdir %s/Report/qc/%s_QCreport/' %(projdir,report_id))
+os.system("cp -rf /TJPROJ2/PBD/linrongnan/WES_qc_report/mouse_wes_seq_qc_demo_report/src %s/Report/qc/%s_QCreport/src" %(projdir,report_id))
+os.system("cp /TJPROJ2/PBD/linrongnan/WES_qc_report/mouse_wes_seq_qc_demo_report/whole_Report.html %s/Report/qc/%s_QCreport/%s.html" %(projdir,report_id,report_id))
+
+
+#convert pictures
+
+for eachS in samplelist:
+        os.system('convert -resize 600 %s/QC/%s/%s.Error.png %s/Report/qc/%s_QCreport/src/pictures/Error/%s.Error.png' % (projdir,eachS,dic_sample_to_prefix[eachS],projdir,report_id,dic_sample_to_prefix[eachS]))
+        os.system('convert -resize 90 %s/QC/%s/%s.Error.png %s/Report/qc/%s_QCreport/src/pictures/Error/%s.Error.JPEG' % (projdir,eachS,dic_sample_to_prefix[eachS],projdir,report_id,dic_sample_to_prefix[eachS]))
+        os.system('convert -resize 600 %s/QC/%s/%s.GC.png %s/Report/qc/%s_QCreport/src/pictures/GC/%s.GC.png' % (projdir,eachS,dic_sample_to_prefix[eachS],projdir,report_id,dic_sample_to_prefix[eachS]))
+        os.system('convert -resize 90 %s/QC/%s/%s.GC.png %s/Report/qc/%s_QCreport/src/pictures/GC/%s.GC.JPEG' % (projdir,eachS,dic_sample_to_prefix[eachS],projdir,report_id,dic_sample_to_prefix[eachS]))
+        os.system('convert -resize 600 %s/QC/%s/%s.QM.png %s/Report/qc/%s_QCreport/src/pictures/QM/%s.QM.png' % (projdir,eachS,dic_sample_to_prefix[eachS],projdir,report_id,dic_sample_to_prefix[eachS]))
+        os.system('convert -resize 90 %s/QC/%s/%s.QM.png %s/Report/qc/%s_QCreport/src/pictures/QM/%s.QM.JPEG' % (projdir,eachS,dic_sample_to_prefix[eachS],projdir,report_id,dic_sample_to_prefix[eachS]))
+        os.system('convert -resize 600 %s/QC/%s/%s.pie3d.png %s/Report/qc/%s_QCreport/src/pictures/Pie/%s.pie3d.png' % (projdir,eachS,dic_sample_to_prefix[eachS],projdir,report_id,dic_sample_to_prefix[eachS]))
+        os.system('convert -resize 90 %s/QC/%s/%s.pie3d.png %s/Report/qc/%s_QCreport/src/pictures/Pie/%s.pie3d.JPEG' % (projdir,eachS,dic_sample_to_prefix[eachS],projdir,report_id,dic_sample_to_prefix[eachS]))
+
+
+
+#make table
+
+title_project=open(projdir+'/Report/qc/'+report_id+'_QCreport/src/tables/title_project','w')
+title_project.write("<h4>项目编号："+project_id+"</h4>"+"\n")
+title_project.write("<h4>项目名称："+project_name+"</h4>"+"\n")
+title_project.write("<h4>报告时间："+jieti_time+"</h4>"+"\n")
+title_project.write("<h4>报告编号："+report_id+"</h4>"+"\n")
+title_project.close()
+
+
+Table1=open(projdir+'/Report/qc/'+report_id+'_QCreport/src/tables/table1','w')
+Table1.write('<tr class="tb2"><th class="tb2">PatientID</th><th class="tb2">SampleID</th><th class="tb2">LibraryID</th><th class="tb2">Type</th></tr>'+'\n')
+for eachS in samplelist:
+        Table1.write('<tr class="tb2"><td class="tb2">'+dic_sample_to_PatientID[eachS]+'</td><td class="tb2">'+eachS+'</td><td class="tb2">'+dic_sample_to_LibraryID[eachS]+'</td><td class="tb2">'+dic_sample_to_stype[eachS]+'</td></tr>'+'\n' )
+
+
+Table1.close()
+
+picture2=open(projdir+'/Report/qc/'+report_id+'_QCreport/src/tables/picture2','w')
+picture3=open(projdir+'/Report/qc/'+report_id+'_QCreport/src/tables/picture3','w')
+picture4=open(projdir+'/Report/qc/'+report_id+'_QCreport/src/tables/picture4','w')
+picture5=open(projdir+'/Report/qc/'+report_id+'_QCreport/src/tables/picture5','w')
+for eachS in samplelist:
+        picture2.write("<li><a id=\"example2\" href='pictures/Pie/%s.pie3d.png' ><img src='pictures/Pie/%s.pie3d.JPEG'/></a></li>\n" %(dic_sample_to_prefix[eachS],dic_sample_to_prefix[eachS]))
+        picture3.write("<li><a id=\"example2\" href='pictures/Error/%s.Error.png' ><img src='pictures/Error/%s.Error.JPEG'/></a></li>\n" %(dic_sample_to_prefix[eachS],dic_sample_to_prefix[eachS]))
+        picture4.write("<li><a id=\"example2\" href='pictures/GC/%s.GC.png' ><img src='pictures/GC/%s.GC.JPEG'/></a></li>\n" %(dic_sample_to_prefix[eachS],dic_sample_to_prefix[eachS]))
+        picture5.write("<li><a id=\"example2\" href='pictures/QM/%s.QM.png' ><img src='pictures/QM/%s.QM.JPEG'/></a></li>\n" %(dic_sample_to_prefix[eachS],dic_sample_to_prefix[eachS]))
+
+
+
+picture2.close()
+picture3.close()
+picture4.close()
+picture5.close()
+
+os.system("/TJPROJ2/PBD/linrongnan/WES_qc_report/bin/datastat_seq --rootdir %s --qc_list %s" %(projdir,qclist))
+Table6=open(projdir+'/Report/qc/'+report_id+'_QCreport/src/tables/table6','w')
+DataStat=open(projdir+'/QC/datastat.xls','r')
+header=DataStat.readline()
+headers=header.strip().split('\t')
+headers2table='</th><th class="tb2">'.join(headers)
+Table6.write('<tr class="tb2"><th class="tb2">'+headers2table+'</th></tr>'+'\n')
+
+for eachline in DataStat:
+        eachlines=eachline.strip().split('\t')
+        eachlines2table='</td><td class="tb2">'.join(eachlines)
+        Table6.write('<tr class="tb2"><td class="tb2">'+eachlines2table+'</td></tr>'+'\n')
+
+
+Table6.close()
+DataStat.close()
+
+
+os.system('/PUBLIC/software/RNA/php/php-7.0.2/bin/php /TJPROJ2/PBD/linrongnan/WES_qc_report/bin/QCreport.php %s/Report/qc/%s_QCreport/src/tables/ /TJPROJ2/PBD/linrongnan/WES_qc_report/mouse_wes_seq_qc_demo_report/src/body.html %s/Report/qc/%s_QCreport/src/body.html %s' %(projdir,report_id,projdir,report_id,report_id))
+os.system('cd %s/Report/qc/ && tar -czvf %s_QCreport.tar.gz %s_QCreport ' %(projdir,report_id,report_id))
+os.system('/TJPROJ2/PBD/linrongnan/WES_qc_report/bin/QCresult_seq --project %s --projdir %s --qclist %s' %(project,projdir,qclist))
