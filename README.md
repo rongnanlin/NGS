@@ -52,7 +52,7 @@ Run the following codes for test:
 
 
 ## DATABASE
-Users could build their own database based on the NCBI Taxonomy database [NCBI Taxonomy database](https://ftp.ncbi.nih.gov/pub/taxonomy/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
+Users could build their own database based on the [NCBI Taxonomy database](https://ftp.ncbi.nih.gov/pub/taxonomy/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
 
 
 
