@@ -19,9 +19,9 @@ Run:
     bash dep/create_conda_env.sh
 ```
 
-3.To increase the read length supported by IDBA_ud, you have to re-compile IDBA_ud from the source as follows:
-(1).Modify "kMaxShortSequence" from 128 to 152 (or more) in /src/sequence/short_sequence.h 
-(2).configure & make!
+3. To increase the read length supported by IDBA_ud, you have to re-compile IDBA_ud from the source as follows:
+ Modify "kMaxShortSequence" from 128 to 152 (or more) in /src/sequence/short_sequence.h 
+ configure & make!
 
 ## Usage:
 All parameters are specified in the analyzer configuration file.
