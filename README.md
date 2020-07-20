@@ -22,12 +22,14 @@ Run:
 3. How to compile IDBA_ud supported by long sequence?  
 After downloading the IDBA source code, modify line 102 of the ‘./src/sequence/short_sequence.h’ file and change the number before the semicolon at the end of the line to 152. Then compile the program normally
 
-## Quick Start
-Usage:  
+## Usage:
+All parameters are specified in the analyzer configuration file.
 ```
     bash run_analysis.sh -f|--config_file [ConfigFile] >& [logfile]
 ```
-Run test:  
+
+## Test:
+Run the following codes for test:
 ```
     cd [work folder]
     bash run_analysis.sh -f ./data/ConfigFile/test.ConfigFile >& test.log
