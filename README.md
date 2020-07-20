@@ -2,8 +2,8 @@
 
 ## Introduction:
 16S-FASAS is a full-length 16S amplicon sequencing data analysis system which contains collections of modules such as data quality control, sequence demultiplexing, parallel assembly, taxonomy annotation and so on. 
+![Overall workflow of 16S-FASAS](https://github.com/*找个路径帮忙放个图片*/figure1.jpg)
 
-![Overall workflow of 16S-FASAS](https://github.com/rongnanlin/NGS/blob/master/figure1.jpg)
 ## Installtion
 1. An environment variable FASASHome is defined in 16S-FASAS. Run '. add_env.sh' or 'source add.env.sh' to write the FASASHome variable to ~/.bashrc and export it in the current SHELL.
 Run:
@@ -47,8 +47,13 @@ All parameters are specified in the analyzer configuration file.
 ## Test:
 Run the following codes for test:
 ```
+    #build test database
+    bash ${FASASHome}/data/test_data/database/build_database.sh ${FASASHome}/data/test_data/database/mini_fulllength.fasta
+    #create config file
     cd [work folder]
-    bash run_analysis.sh -f ./data/ConfigFile/test.ConfigFile >& test.log
+    bash ${FASASHome}/data/test_data/create_test_config.sh > ./test.configfile
+    #run test analysis
+    bash ${FASASHome}/run_analysis.sh -f ./test.configfile >& test.log
 ```
 
 
