@@ -20,9 +20,8 @@ Run:
 ```
 
 3. To assemble paired-end reads with longer read length, you have to re-compile IDBA_ud from the source as follows:
-
-- Modify the constant "kMaxShortSequence" from 128 to 152 (or more) in /src/sequence/short_sequence.h
-- configure & make!
+   - Modify the constant "kMaxShortSequence" from 128 to 152 (or more) in /src/sequence/short_sequence.h
+   - configure & make!
 
 ## Usage:
 All parameters are specified in the analyzer configuration file.
@@ -54,7 +53,7 @@ Run the following codes for test:
 
 
 ## DATABASE
-Users could build their own database based on the [NCBI Taxonomy database](https://ftp.ncbi.nih.gov/pub/taxonomy/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
+ Database could be built based on the [NCBI Taxonomy database](https://ftp.ncbi.nih.gov/pub/taxonomy/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
 
 
 
