@@ -19,8 +19,9 @@ Run:
     bash dep/create_conda_env.sh
 ```
 
-3. How to compile IDBA_ud supported by long sequence?  
-After downloading the IDBA source code, modify line 102 of the ‘./src/sequence/short_sequence.h’ file and change the number before the semicolon at the end of the line to 152. Then compile the program normally
+3.To increase the read length supported by IDBA_ud, you have to re-compile IDBA_ud from the source as follows:
+(1).Modify "kMaxShortSequence" from 128 to 152 (or more) in /src/sequence/short_sequence.h 
+(2).configure & make!
 
 ## Usage:
 All parameters are specified in the analyzer configuration file.
