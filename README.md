@@ -19,7 +19,7 @@ Run:
     bash dep/create_conda_env.sh
 ```
 
-3.To assemble paired-end reads with longer read length, you have to re-compile IDBA_ud from the source as follows:
+3. To assemble paired-end reads with longer read length, you have to re-compile IDBA_ud from the source as follows:
 
 1) Modify the "kMaxShortSequence" from 128 to 152 (or more) in /src/sequence/short_sequence.h  
 2) configure & make!
