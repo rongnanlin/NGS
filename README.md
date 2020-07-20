@@ -51,8 +51,8 @@ Run the following codes for test:
     ContigLength            int        Minmum contig length                      [1200]
 
 
-## Preliminary Taxonomy Algorith
-**DATABASE**, The 16s database mainly includes [NCBI Taxonomy database](https://ftp.ncbi.nih.gov/pub/taxonomy/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
+## DATABASE
+Users could build their own database based on the NCBI Taxonomy database [NCBI Taxonomy database](https://ftp.ncbi.nih.gov/pub/taxonomy/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
 
 
 
