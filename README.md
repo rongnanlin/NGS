@@ -28,13 +28,6 @@ All parameters are specified in the analyzer configuration file.
     bash run_analysis.sh -f|--config_file [ConfigFile] >& [logfile]
 ```
 
-## Test:
-Run the following codes for test:
-```
-    cd [work folder]
-    bash run_analysis.sh -f ./data/ConfigFile/test.ConfigFile >& test.log
-```
-
 ## Configuration parameters:
     SampleName              strings    Sample name                               [none]
     WorkFolder              strings    Working directory                         [none]
@@ -49,6 +42,13 @@ Run the following codes for test:
     AssembleProgram         strings    16s rRNA assembler                        [cap3 or idba_ud]
     IlluminaAdapter         strings    Sequencing adapter                        [none]
     ContigLength            int        Minmum contig length                      [1200]
+
+## Test:
+Run the following codes for test:
+```
+    cd [work folder]
+    bash run_analysis.sh -f ./data/ConfigFile/test.ConfigFile >& test.log
+```
 
 
 ## DATABASE
