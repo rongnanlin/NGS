@@ -1,7 +1,7 @@
 # 16S-FASAS: 16S rRNA full-Length Amplicon Sequencing Analysis System
 
 ## Introduction:
-16S-FASAS is a full-length 16S amplicon sequencing data analysis system which contains collections of modules such as data quality control, sequence demultiplexing, parallel assembly, taxonomy annotation and so on. Most modules are written in Perl and an intergrated pipeline in shell is offered which take a variety of parameters through the configure file.
+16S-FASAS is a full-length 16S amplicon sequencing data analysis system which contains collections of modules such as data quality control, sequence demultiplexing, parallel assembly, taxonomy annotation and so on. 
 
 ![Overall workflow of 16S-FASAS](https://github.com/rongnanlin/NGS/blob/master/figure1.jpg)
 ## Installtion
@@ -11,6 +11,7 @@ Run:
     cd ${FASAS_HOME_FOLDER}
     . ./add_env.sh
 ```
+
 2. 16S-FASAS requires some Perl modules and a conda environment, the installation script has been placed in the 'dep' directory. The installation process is very simple, just execute 'bash dep/create_conda_env.sh' and make a selection as prompted. The script will output 'done' at the end when the script runs successfully.
 Run:
 ```bash
@@ -18,7 +19,7 @@ Run:
     bash dep/create_conda_env.sh
 ```
 
-How to compile IDBA_ud supported by long sequence?  
+3. How to compile IDBA_ud supported by long sequence?  
 After downloading the IDBA source code, modify line 102 of the ‘./src/sequence/short_sequence.h’ file and change the number before the semicolon at the end of the line to 152. Then compile the program normally
 
 ## Quick Start
