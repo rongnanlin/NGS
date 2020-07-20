@@ -1,4 +1,4 @@
-# FASAS: Full-Length Amplicon Sequencing Analysis System
+# 16S-FASAS: 16S rRNA full-Length Amplicon Sequencing Analysis System
 
 ## Introduction:
 16S-FASAS is a full-length 16S amplicon sequencing data analysis system which contains collections of modules such as data quality control, sequence demultiplexing, parallel assembly, taxonomy annotation and so on. Most modules are written in Perl and an intergrated pipeline in shell is offered which take a variety of parameters through the configure file.
@@ -11,12 +11,15 @@ Run:
     cd ${FASAS_HOME_FOLDER}
     . ./add_env.sh
 ```
-2. FASAS requires some Perl modules and a conda environment, the installation script has been placed in the 'dep' directory. The installation process is very simple, just execute 'bash dep/create_conda_env.sh' and make a selection as prompted. The script will output 'done' at the end when the script runs successfully.
+2. 16S-FASAS requires some Perl modules and a conda environment, the installation script has been placed in the 'dep' directory. The installation process is very simple, just execute 'bash dep/create_conda_env.sh' and make a selection as prompted. The script will output 'done' at the end when the script runs successfully.
 Run:
 ```bash
     cd ${FASAS_HOME_FOLDER}
     bash dep/create_conda_env.sh
 ```
+
+How to compile IDBA_ud supported by long sequence?  
+After downloading the IDBA source code, modify line 102 of the ‘./src/sequence/short_sequence.h’ file and change the number before the semicolon at the end of the line to 152. Then compile the program normally
 
 ## Quick Start
 Usage:  
@@ -38,19 +41,17 @@ Run test:
     ReadLibraryR1           strings    Forward sequence of Read-tag library      [none]
     ReadLibraryR2           strings    Reverse sequence of Read-tag library      [none]
     CoverageDatabase        strings    Bowtie2 database of 16s rRNA              [none]
-    ReferenceFasta          strings    Reference sequence, FASTA format          [NCBI 16s rRNA database]
-    ReferenceTaxonomy       strings    Reference taxonomy, TSV table             [NCBI Taxonomy]
+    ReferenceFasta          strings    Reference sequence, FASTA format          [none]
+    ReferenceTaxonomy       strings    Reference taxonomy, TSV table             [none]
     AssembleProgram         strings    16s rRNA assembler                        [cap3 or idba_ud]
-    IlluminaAdapter         strings    Sequencing adapter                        [CTGTCTCTTATACACATCT]
+    IlluminaAdapter         strings    Sequencing adapter                        [none]
     ContigLength            int        Minmum contig length                      [1200]
 
 
 ## Preliminary Taxonomy Algorith
 **DATABASE**, The 16s database mainly includes [NCBI Taxonomy database](https://ftp.ncbi.nih.gov/pub/taxonomy/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
 
-## IDBA_UD
-How to compile IDBA_ud supported by long sequence?  
-After downloading the IDBA source code, modify line 102 of the ‘./src/sequence/short_sequence.h’ file and change the number before the semicolon at the end of the line to 152. Then compile the program normally
+
 
 ## License
 
