@@ -3,7 +3,7 @@
 ## Introduction:
 16S-FASAS is a full-length 16S amplicon sequencing data analysis system which contain collections of modules such as data quality control, sequence demultiplexing, parallel assembly, taxonomy annotation and so on. Most modules are written in Perl and an intergrated pipeline in shell is offered which take a variety of parameters through the configure file.
 
-
+![Overall workflow of 16S-FASAS](https://github.com/rongnanlin/NGS/blob/master/figure1.jpg)
 ## Installtion
 1. Install Note: FASAS has passed the installation test in three systems: CentOS 6, CentOS 7 and Ubuntu 18.04.
 2. An environment variable FASASHome is defined in FASAS. Run '. add_env.sh' or 'source add.env.sh' to write the FASASHome variable to ~/.bashrc and export it in the current SHELL.
