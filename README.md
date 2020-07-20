@@ -29,7 +29,7 @@ Run test:
     bash run_analysis.sh -f ./data/ConfigFile/test.ConfigFile >& test.log
 ```
 
-##  configuration parameters:
+## Configuration parameters:
     SampleName              strings    Sample name                               [none]
     WorkFolder              strings    Working directory                         [none]
     LibraryInfo             strings    A text file describing library design     [126_length_library_info.txt]
@@ -46,7 +46,7 @@ Run test:
 
 
 ## Preliminary Taxonomy Algorith
-**DATABASE**, The 16s database mainly includes [NCBI Blast](ftp://ftp.ncbi.nlm.nih.gov/blast/db/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
+**DATABASE**, The 16s database mainly includes [NCBI Taxonomy database](https://ftp.ncbi.nih.gov/pub/taxonomy/), [Silva](https://www.arb-silva.de/), [Greengene](http://greengenes.secondgenome.com/), [RDP](http://rdp.cme.msu.edu/) and [EzBioCloud](https://www.ezbiocloud.net).  
 
 ## IDBA_UD
 How to compile IDBA_ud supported by long sequence?  
