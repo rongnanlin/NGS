@@ -1,6 +1,6 @@
 # FASAS: Full-Length Amplicon Sequencing Analysis System
 
-##Introduction:
+## Introduction:
 16S-FASAS is a full-length 16S amplicon sequencing data analysis system which contain collections of modules such as data quality control, sequence demultiplexing, parallel assembly, taxonomy annotation and so on. Most modules are written in Perl and an intergrated pipeline in shell is offered which take a variety of parameters through the configure file.
 
 
