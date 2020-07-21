@@ -5,11 +5,11 @@
 ![Overall workflow of 16S-FASAS](https://github.com/zhangke-cs/FASAS/blob/master/data/project_png/figure1.jpg)
 
 ## Installtion
-1. An environment variable FASASHome is defined in 16S-FASAS. Run '. add_env.sh' or 'source add.env.sh' to write the FASASHome variable to ~/.bashrc and export it in the current SHELL.
+1. An environment variable FASASHome is defined in 16S-FASAS. Run 'bash add_env.sh' or 'source add.env.sh' to write the FASASHome variable to ~/.bashrc and export it in the current SHELL.
 Run:
 ```bash
     cd ${FASAS_HOME_FOLDER}
-    . ./add_env.sh
+    bash ./add_env.sh
 ```
 
 2. 16S-FASAS requires some Perl modules and a conda environment, the installation script has been placed in the 'dep' directory. The installation process is very simple, just execute 'bash dep/create_conda_env.sh' and make a selection as prompted. The script will output 'done' at the end when the script runs successfully.
@@ -20,8 +20,10 @@ Run:
 ```
 
 3. To assemble paired-end reads with longer read length, you have to re-compile IDBA_ud from the source as follows:
-    - Modify the constant "kMaxShortSequence" from 128 to 157 (or more) in /src/sequence/short_sequence.h
-    - configure & make!
+ ```
+   Modify the constant "kMaxShortSequence" from 128 to 157 (or more) in /src/sequence/short_sequence.h
+    configure & make!
+```
 
 ## Usage
 All parameters are specified in the analyzer configuration file.
