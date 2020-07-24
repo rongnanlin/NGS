@@ -25,6 +25,7 @@ Run:
 ```
 
 4. To assemble paired-end reads with longer read length, you have to re-compile IDBA_ud from the source as follows. Modify the constant "kMaxShortSequence" from 128 to 157 (or more) in /src/sequence/short_sequence.h:
+
 **before:**
  ```
     102     static const uint32_t kMaxShortSequence = 128;  
