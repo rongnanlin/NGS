@@ -7,8 +7,9 @@
 ## Installtion
 1. Clone the repository to your local path. 
 Run:
-```mkdir /PATH/TO/FASASHome/
-git clone https://github.com/zhangke-cs/FASAS.git /PATH/TO/FASASHome/
+```bash
+    mkdir /PATH/TO/FASASHome/
+    git clone https://github.com/zhangke-cs/FASAS.git /PATH/TO/FASASHome/
 ```
 2. An environment variable FASASHome is defined in 16S-FASAS. Run 'bash add_env.sh' or 'source add.env.sh' to write the FASASHome variable to ~/.bashrc and export it in the current SHELL.
 Run:
@@ -27,11 +28,11 @@ Run:
  ```
     102     static const uint32_t kMaxShortSequence = 128;  #before
     102     static const uint32_t kMaxShortSequence = 157;  #after
- ```
- ```bash
+```
+```bash
     cd /PATH/TO/idba/idba-master
     configure & make!
- ```
+```
  
 ## Usage
 All parameters are specified in the analyzer configuration file.
